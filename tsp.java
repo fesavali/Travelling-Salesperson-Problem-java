@@ -218,54 +218,54 @@ class tsp
         int cities;  
         String names; 
         ArrayList<String> LIST = new ArrayList<String>(); 
-        //create scanner class object to get input from user  
-        Scanner sc = new Scanner(System.in);  
-          
-        // get total number of cities from the user  
-        System.out.println("Enter total number of cities to visit");  
-        cities = sc.nextInt();
-         
-        while(LIST.size() <= cities){
-            System.out.println("Enter City Name:");  
-            names = sc.next().toString();
-            LIST.add(names); 
-        }
-        //get distance of cities from the user  
-        int distance[][] = new int[cities][cities];
-        for( int s = 0; s < cities; s++){  
-            for( int t = 0; t < cities; t++){ 
-                System.out.println(" Enter Distance from: " + LIST.get(s+0).toString() +" to: "+ LIST.get(t+1).toString() +": ");  
-                distance[s][t] = sc.nextInt();  
+        try (//create scanner class object to get input from user  
+        Scanner sc = new Scanner(System.in)) {
+            // get total number of cities from the user  
+            System.out.println("Enter total number of cities to visit");  
+            cities = sc.nextInt();
+             
+            while(LIST.size() <= cities){
+                System.out.println("Enter City Name:");  
+                names = sc.next().toString();
+                LIST.add(names); 
+            }
+            //get distance of cities from the user  
+            int distance[][] = new int[cities][cities];
+            for( int s = 0; s < cities; s++){  
+                for( int t = 0; t < cities; t++){ 
+                    System.out.println(" Enter Distance from: " + LIST.get(s+0).toString() +" to: "+ LIST.get(t+1).toString() +": ");  
+                    distance[s][t] = sc.nextInt();  
+                }  
             }  
-        }  
 
-        // create an array of type boolean to check if a node has been visited or not  
-        boolean[] visitCity = new boolean[cities];  
+            // create an array of type boolean to check if a node has been visited or not  
+            boolean[] visitCity = new boolean[cities];  
 
-        // by default, we make the first city visited  
-        visitCity[0] = true;  
-        
-        
-        int Q = Integer.MAX_VALUE;  
+            // by default, we make the first city visited  
+            visitCity[0] = true;  
+            
+            
+            int Q = Integer.MAX_VALUE;  
 
-        // call findHamiltonianCycle() method that returns the minimum weight Hamiltonian Cycle
-        Q = findHamiltonianCycle(distance, visitCity, 0, cities, 1, 0, Q);  
+            // call findHamiltonianCycle() method that returns the minimum weight Hamiltonian Cycle
+            Q = findHamiltonianCycle(distance, visitCity, 0, cities, 1, 0, Q);  
 
-        //print starting city
-        System.out.println("Starting City: " + LIST.get(0).toString());
-        //print starting city
-        System.out.println("Ending City: " + LIST.get(LIST.size() - 1).toString());
+            //print starting city
+            System.out.println("Starting City: " + LIST.get(0).toString());
+            //print starting city
+            System.out.println("Ending City: " + LIST.get(LIST.size() - 1).toString());
 
-        //print cities visited
-        //Visited Cities
-        System.out.println("List of Visited Cities: ");
-        for (int i = 0; i < LIST.size();i++) 
-        { 		      
-            System.out.println(LIST.get(i)); 		
-        }  
-        // print the minimum weighted Hamiltonian Cycle  
-        System.out.println("Greedy Method Minimum travel cost: " + Q);
+            //print cities visited
+            //Visited Cities
+            System.out.println("List of Visited Cities: ");
+            for (int i = 0; i < LIST.size();i++) 
+            { 		      
+                System.out.println(LIST.get(i)); 		
+            }  
+            // print the minimum weighted Hamiltonian Cycle  
+            System.out.println("Greedy Method Minimum travel cost: " + Q);
 
-        return Q;
+            return Q;
+        }
     }  
 }  
