@@ -1,0 +1,20 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Launch tsp",
+            "request": "launch",
+            "mainClass": "tsp",
+            "projectName": "tsp_ade20e2e"
+        },
+        {
+            "name": "Attach to Chrome",
+            "port": 12651,
+            "request": "launch",
+            "type": "pwa-chrome",
+            "restart": true,
+            "url": "http://localhost:8080/",
+            "webRoot": "${workspaceFolder}"
+        }
+    ]
+}
